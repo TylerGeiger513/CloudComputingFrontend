@@ -1,10 +1,10 @@
-/* Container for the right-side FriendsCard */
+/* Friends Sidebar Wrapper (used by FriendsComponent) */
 .sideNav {
   position: relative;
-  top: 60px;
-  bottom: 0;
-  right: 0;
-  width: 250px;
+  height: 100%;
+  /* When expanded, use 20vw with a min-width */
+  width: 20vw;
+  min-width: 250px;
   background: var(--surface-a10);
   border-left: 1px solid var(--surface-a40);
   box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
@@ -15,15 +15,26 @@
   overflow: hidden;
 }
 
+/* When collapsed, only show the header (expand button) */
 .collapsed {
-  width: 40px;
-  padding: 16px 4px;
+  width: 40px !important;
+  min-width: 40px !important;
+  height: min-content;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
 }
 
+/* Header */
 .header {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+}
+
+/* Center the toggle button when collapsed */
+.collapsed .header {
+  justify-content: center;
 }
 
 .toggleBtn {
@@ -46,9 +57,7 @@
 }
 
 /* Content area */
-.content {
-  /* Standard block flow */
-}
+.content {}
 
 /* Section spacing */
 .section {
@@ -73,12 +82,11 @@
 .sendBtn {
   background: var(--primary-a0);
   color: white;
-  padding: 8px 8px;
+  padding: 8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.8rem;
-  max-height: 30px;
 }
 
 /* Friend List styling */
@@ -117,12 +125,10 @@
   font-size: 1rem;
 }
 
-/* Divider between friend cards */
-.divider {
-  width: 80%;
-  height: 1px;
-  background: var(--surface-a30);
-  margin: 8px auto;
+/* Divider between sections */
+.sectionDivider {
+  border-top: 1px solid var(--surface-a30);
+  margin: 16px 0;
 }
 
 /* Context Menu styling */
@@ -176,7 +182,7 @@
   align-items: center;
 }
 
-/* Updated Accept and Decline Button Styles using Icons */
+/* Accept and Decline Button Styles using Icons */
 .acceptBtn,
 .declineBtn {
   border: none;
@@ -191,22 +197,22 @@
 }
 
 .acceptBtn {
-  background-color: var(--color-darker-green); /* default darker green (#04aa4e) */
+  background-color: var(--color-darker-green);
 }
 
 .declineBtn {
-  background-color: var(--color-darker-red); /* default darker red (#fc422d) */
+  background-color: var(--color-darker-red);
 }
 
 .acceptBtn:hover {
-  background-color: var(--color-light-green); /* lighter green on hover (#b7e9ce) */
+  background-color: var(--color-light-green);
 }
 
 .declineBtn:hover {
-  background-color: var(--color-light-red); /* lighter red on hover (#fbe3e4) */
+  background-color: var(--color-light-red);
 }
 
-/* Ensuring icons inside buttons are always white */
+/* Icon styling for buttons */
 .buttonIcon {
   width: 16px;
   height: 16px;
@@ -214,7 +220,7 @@
   fill: none;
 }
 
-/* --- New Styles for the Three Dots Button --- */
+/* Three Dots Button in Friend Cards */
 .threeDotsBtn {
   background: none;
   border: none;

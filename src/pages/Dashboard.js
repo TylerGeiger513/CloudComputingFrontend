@@ -1,23 +1,33 @@
 import React from "react";
 import Header from "../components/layout/Header";
 import FriendsComponent from "../components/friends/FriendsComponent";
-import "./Dashboard.css"; // Dashboard-specific CSS
+import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
     <div className="dashboard-wrapper">
       <Header />
       <div className="dashboard-container">
-        {/* Main content on the left */}
+        {/* Left Navbar Column */}
+        <div className="dashboard-left">
+          {/* Add left nav content here */}
+          <div>Logo</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+        </div>
+        {/* Main Content Column */}
         <main className="dashboard-main">
-          
           <h2>Welcome to Your Dashboard</h2>
           <p>
             Here you can manage your projects and collaborate with others.
           </p>
-          <FriendsComponent />
-          {/* Additional components can be placed here */}
+          {/* Additional main content */}
         </main>
+        {/* Friends Sidebar Column */}
+        <aside className="dashboard-friends">
+          <FriendsComponent />
+        </aside>
       </div>
     </div>
   );

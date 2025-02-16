@@ -1,4 +1,4 @@
-// /components/friends/FriendsCard.js
+// /components/friends/FriendsComponent.js
 import React, { useState, useEffect } from "react";
 import FriendsCardHeader from "./FriendsCardHeader";
 import AddFriendSection from "./AddFriendSection";
@@ -96,7 +96,6 @@ const FriendsComponent = () => {
     try {
       await removeFriend(friendId);
       fetchFriends();
-      // Close context menu after removal
       setContextMenu({ visible: false, x: 0, y: 0, friend: null });
     } catch (err) {
       console.error(err);
