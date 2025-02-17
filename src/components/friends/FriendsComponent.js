@@ -127,24 +127,23 @@ const FriendsComponent = () => {
   return (
     <div className={`${styles.sideNav} ${isCollapsed ? styles.collapsed : ""}`}>
       <FriendsCardHeader isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
-      {!isCollapsed && (
-        <div className={styles.content}>
-          {error && <p className={styles.error}>{error}</p>}
-          <AddFriendSection
-            newFriend={newFriend}
-            setNewFriend={setNewFriend}
-            handleSendRequest={handleSendRequest}
-          />
-          <div className={styles.sectionDivider} />
-          <FriendList friendList={friendList} defaultPFP={defaultPFP} handleContextMenu={handleContextMenu} />
-          <div className={styles.sectionDivider} />
-          <FriendRequests
-            friendRequests={friendRequests}
-            handleAcceptRequest={handleAcceptRequest}
-            handleDeclineRequest={handleDeclineRequest}
-          />
-        </div>
-      )}
+      {/* Always render the content; CSS will handle fading it out */}
+      <div className={styles.content}>
+        {error && <p className={styles.error}>{error}</p>}
+        <AddFriendSection
+          newFriend={newFriend}
+          setNewFriend={setNewFriend}
+          handleSendRequest={handleSendRequest}
+        />
+        <div className={styles.sectionDivider} />
+        <FriendList friendList={friendList} defaultPFP={defaultPFP} handleContextMenu={handleContextMenu} />
+        <div className={styles.sectionDivider} />
+        <FriendRequests
+          friendRequests={friendRequests}
+          handleAcceptRequest={handleAcceptRequest}
+          handleDeclineRequest={handleDeclineRequest}
+        />
+      </div>
       {contextMenu.visible && (
         <ContextMenu contextMenu={contextMenu} handleRemoveFriend={handleRemoveFriend} />
       )}

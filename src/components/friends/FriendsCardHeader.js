@@ -10,7 +10,7 @@ const FriendsCardHeader = ({ isCollapsed, setIsCollapsed }) => {
   };
 
   return (
-    <div className={styles.header}>
+    <div className={styles.friendHeader}>
       <button
         className={styles.toggleBtn}
         onClick={toggleSidebar}

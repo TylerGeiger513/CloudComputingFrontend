@@ -2,11 +2,8 @@
 .sideNav {
   position: relative;
   height: 100%;
-  /* When expanded, use 20vw with a min-width */
   width: 20vw;
-  min-width: 250px;
   background: var(--surface-a10);
-  border-left: 1px solid var(--surface-a40);
   box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   padding: 16px;
@@ -17,23 +14,22 @@
 
 /* When collapsed, only show the header (expand button) */
 .collapsed {
-  width: 40px !important;
-  min-width: 40px !important;
-  height: min-content;
+  width: 40px;
+  min-width: 40px;
   background-color: transparent;
   box-shadow: none;
   border: none;
 }
 
 /* Header */
-.header {
+.friendHeader {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
 }
 
 /* Center the toggle button when collapsed */
-.collapsed .header {
+.collapsed .friendHeader {
   justify-content: center;
 }
 
@@ -56,8 +52,16 @@
   font-size: 1.5rem;
 }
 
-/* Content area */
-.content {}
+/* Content area: always rendered but fades when collapsed */
+.content {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.collapsed .content {
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* Section spacing */
 .section {
