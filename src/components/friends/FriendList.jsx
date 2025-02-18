@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./FriendsCard.module.css";
+import styles from "../../styles/FriendsCard.module.css";
 import FriendCard from "./FriendCard";
 
 const FriendList = ({ friendList, defaultPFP, handleContextMenu }) => {

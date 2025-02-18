@@ -1,4 +1,3 @@
-// /components/friends/FriendsComponent.js
 import React, { useState, useEffect } from "react";
 import FriendsCardHeader from "./FriendsCardHeader";
 import AddFriendSection from "./AddFriendSection";
@@ -12,9 +11,9 @@ import {
   declineFriendRequest,
   getFriendList,
   removeFriend,
-} from "../../services/friendService";
-import styles from "./FriendsCard.module.css";
-import defaultPFP from "../../styles/images/Default_pfp.jpg";
+} from "../../services/FriendService.js";
+import styles from "../../styles/FriendsCard.module.css";
+import defaultPFP from "../../assets/images/Default_pfp.jpg";
 
 const FriendsComponent = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -23,7 +22,6 @@ const FriendsComponent = () => {
   const [newFriend, setNewFriend] = useState("");
   const [error, setError] = useState("");
 
-  // State for the context menu on friend cards
   const [contextMenu, setContextMenu] = useState({
     visible: false,
     x: 0,
@@ -105,12 +103,7 @@ const FriendsComponent = () => {
 
   const handleContextMenu = (e, friend) => {
     e.preventDefault();
-    setContextMenu({
-      visible: true,
-      x: e.pageX,
-      y: e.pageY,
-      friend,
-    });
+    setContextMenu({ visible: true, x: e.pageX, y: e.pageY, friend });
   };
 
   const handleCloseContextMenu = () => {
@@ -127,22 +120,13 @@ const FriendsComponent = () => {
   return (
     <div className={`${styles.sideNav} ${isCollapsed ? styles.collapsed : ""}`}>
       <FriendsCardHeader isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
-      {/* Always render the content; CSS will handle fading it out */}
       <div className={styles.content}>
         {error && <p className={styles.error}>{error}</p>}
-        <AddFriendSection
-          newFriend={newFriend}
-          setNewFriend={setNewFriend}
-          handleSendRequest={handleSendRequest}
-        />
+        <AddFriendSection newFriend={newFriend} setNewFriend={setNewFriend} handleSendRequest={handleSendRequest} />
         <div className={styles.sectionDivider} />
         <FriendList friendList={friendList} defaultPFP={defaultPFP} handleContextMenu={handleContextMenu} />
         <div className={styles.sectionDivider} />
-        <FriendRequests
-          friendRequests={friendRequests}
-          handleAcceptRequest={handleAcceptRequest}
-          handleDeclineRequest={handleDeclineRequest}
-        />
+        <FriendRequests friendRequests={friendRequests} handleAcceptRequest={handleAcceptRequest} handleDeclineRequest={handleDeclineRequest} />
       </div>
       {contextMenu.visible && (
         <ContextMenu contextMenu={contextMenu} handleRemoveFriend={handleRemoveFriend} />

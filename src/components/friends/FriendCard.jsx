@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./FriendsCard.module.css";
-import { ReactComponent as ThreeDotsIcon } from "../../styles/images/three-dots-vertical.svg";
+import styles from "../../styles/FriendsCard.module.css";
+import { ReactComponent as ThreeDotsIcon } from "../../assets/images/three-dots-vertical.svg";
 
 const FriendCard = ({ friend, defaultPFP, handleContextMenu }) => {
   const handleButtonClick = (e) => {
@@ -9,10 +9,7 @@ const FriendCard = ({ friend, defaultPFP, handleContextMenu }) => {
   };
 
   return (
-    <div
-      className={styles.friendCard}
-      onContextMenu={(e) => handleContextMenu(e, friend)}
-    >
+    <div className={styles.friendCard} onContextMenu={(e) => handleContextMenu(e, friend)}>
       <img src={defaultPFP} alt="profile" className={styles.profilePic} />
       <div className={styles.friendInfo}>
         <span className={styles.friendName}>{friend.username}</span>

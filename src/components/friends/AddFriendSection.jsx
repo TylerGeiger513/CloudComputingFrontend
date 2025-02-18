@@ -1,6 +1,5 @@
-// /components/friends/AddFriendSection.js
 import React from "react";
-import styles from "./FriendsCard.module.css";
+import styles from "../../styles/FriendsCard.module.css";
 
 const AddFriendSection = ({ newFriend, setNewFriend, handleSendRequest }) => {
   return (

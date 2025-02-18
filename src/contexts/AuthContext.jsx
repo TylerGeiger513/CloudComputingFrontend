@@ -1,11 +1,10 @@
-// src/context/authContext.js
 import React, { createContext, useState, useEffect } from "react";
 import {
   login as loginService,
   signup as signupService,
   getProfile as getUserProfileService,
   logout as logoutService,
-} from "../services/authService";
+} from "../services/AuthService";
 import { testUser } from "../mockData";
 
 export const AuthContext = createContext();
@@ -21,11 +20,7 @@ export const AuthProvider = ({ children }) => {
         setUser(testUser);
       } else {
         const data = await getUserProfileService();
-        if (data.user) {
-          setUser(data.user);
-        } else {
-          setUser(null);
-        }
+        setUser(data.user || null);
       }
     } catch (error) {
       console.error("Error fetching user profile:", error);
@@ -79,9 +74,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider
-      value={{ user, loginUser, signupUser, logoutUser, loading }}
-    >
+    <AuthContext.Provider value={{ user, loginUser, signupUser, logoutUser, loading }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,13 +1,11 @@
-// src/services/authService.js
 import axios from "axios";
 import { testUser } from "../mockData";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const useMock = process.env.REACT_APP_MOCK === "true";
 
-// Create an axios instance for all API calls
 const axiosInstance = axios.create({
-  baseURL: API_URL + "/auth",
+  baseURL: `${API_URL}/auth`,
   withCredentials: true,
 });
 
@@ -28,9 +26,7 @@ const handleRequest = async (apiCall) => {
       throw new Error(`Error ${error.response.status}: ${message}`);
     } else if (error.request) {
       console.error("No Response Received:", error.request);
-      throw new Error(
-        "No response received from server. Please check your internet connection."
-      );
+      throw new Error("No response received from server. Please check your internet connection.");
     } else {
       console.error("Request Setup Error:", error.message);
       throw new Error(`Request error: ${error.message}`);
@@ -40,7 +36,6 @@ const handleRequest = async (apiCall) => {
 
 export const login = async (username, password) => {
   if (useMock) {
-    // Immediately resolve as if login succeeded
     return Promise.resolve({ message: "Logged in successfully" });
   }
   return handleRequest(() =>
@@ -50,10 +45,7 @@ export const login = async (username, password) => {
 
 export const signup = async (username, email, password) => {
   if (useMock) {
-    return Promise.resolve({
-      message: "User created successfully",
-      userId: testUser._id,
-    });
+    return Promise.resolve({ message: "User created successfully", userId: testUser._id });
   }
   return handleRequest(() =>
     axiosInstance.post("/signup", { username, email, password })

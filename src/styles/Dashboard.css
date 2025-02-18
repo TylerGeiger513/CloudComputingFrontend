@@ -8,7 +8,7 @@
 /* Grid container for left nav, main content, and friends sidebar */
 .dashboard-container {
   display: grid;
-  grid-template-columns: auto 1fr auto; /* left nav, main content, friends sidebar */
+  grid-template-columns: auto 1fr auto;
   flex: 1;
   overflow: hidden;
 }
@@ -32,10 +32,8 @@
 }
 
 /* Friends Sidebar Column */
-/* We let the FriendsComponent control its width (via .sideNav) */
 .dashboard-friends {
   height: 100%;
-  /* No fixed width or min-width here – the grid column is auto */
 }
 
 /* On mobile devices, hide the friends sidebar */
